@@ -1,0 +1,271 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Pretendard', sans-serif;
+    background-color: #B4C4B4;
+    padding: 0px 20px 0px 20px;
+    word-break: keep-all;
+}
+/* 'before' 영역의 위치와 스타일 */
+.before {
+    position: fixed; /* 절대 위치 지정 */
+    top: 20px; /* 위에서 20px 위치 */
+    left: 30px; /* 왼쪽에서 30px 위치 */
+    z-index: 10; /* 클릭 영역이 다른 요소에 가려지지 않도록 설정 */
+}
+
+/* a 태그의 크기를 이미지에 맞게 설정 */
+.before a {
+    display: inline-block; /* 링크 영역이 이미지 크기에 맞게 적용되도록 설정 */
+    width: 50px; /* 이미지 크기에 맞게 */
+    height: auto;
+    z-index: 20; /* a 태그가 다른 요소 위에 위치하도록 설정 */
+}
+
+/* 이미지 스타일 설정 */
+.before img {
+    width: 100%; /* a 태그 내에서 이미지가 크기에 맞게 100% 크기로 조정 */
+    height: auto; /* 비율에 맞춰 높이 자동 조정 */
+    pointer-events: auto; /* 이미지에 클릭 이벤트를 허용 */
+}
+
+
+.leaf {
+    width: 20%;
+    height: 20%;
+    position: absolute;
+    animation: fall 5s linear infinite; /* 애니메이션 속성 */
+    
+    opacity: 0.7; 
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100px); /* 시작 위치 */
+        opacity: 0.7; /
+    }
+    100% {
+        transform: translateY(100vh); /* 바닥까지 떨어지는 위치 */
+        opacity: 0; 
+    }
+}
+
+/* 잎의 크기와 회전 효과를 랜덤으로 설정 */
+.leaf:nth-child(1) {
+    left: 0%; 
+    animation-duration: 6s; /* 애니메이션 지속 시간 */
+    transform: rotate(30deg); /* 회전 효과 */
+}
+
+.leaf:nth-child(2) {
+    left: 40%; 
+    animation-duration: 4s;
+    transform: rotate(-20deg);
+}
+
+.leaf:nth-child(3) {
+    left: 80%; 
+    animation-duration: 5s;
+    transform: rotate(10deg);
+}
+
+.leaf:nth-child(4) {
+    left: 20%; 
+    animation-duration: 9s; 
+    transform: rotate(30deg); 
+}
+
+.leaf:nth-child(5) {
+    left: 60%; 
+    animation-duration: 7s;
+    transform: rotate(-20deg);
+}
+
+.leaf:nth-child(6) {
+    left: 100%; 
+    animation-duration: 6s;
+    transform: rotate(10deg);
+}
+
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: gray;
+    position: relative;
+    overflow: hidden;
+}
+
+.title {
+    font-family: "Gowun Batang", serif;
+    font-size: 2rem;
+    margin: 10px;;
+    color: #166966;
+}
+
+.poem {
+    text-align: center;
+}
+
+.line {
+    font-size: 1rem;
+    margin: 20px 0;
+    transition: color 0.5s ease; /* 색상 변화에 대한 효과 */
+    line-height: 1.7;
+}
+
+.line span:nth-child(3n + 1):after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(images/1/flower.svg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+    transition: 0.5s;
+   
+}
+
+.line span:nth-child(3n + 1):hover:after {
+    opacity: 1;
+    
+}
+
+.line span:nth-child(3n + 3):after {
+    content: "";
+    position: absolute;
+    /* top: 0; */
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(images/1/tree2.svg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+    transition: 0.5s;
+}
+
+.line span:nth-child(3n + 3):hover:after {
+    opacity: 1;
+}
+
+
+.line span:nth-child(3n + 5):after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(images/1/tree.svg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+    transition: 0.5s;
+}
+
+.line span:nth-child(3n +5):hover:after {
+    opacity: 1;
+}
+
+
+
+.line span:nth-child(3n + 1):hover {
+    color: #704F4F;
+}
+.line span:nth-child(3n + 3):hover {
+    color: #553939;
+}
+.line span:nth-child(3n + 5):hover {
+    color: #472D2D;
+}
+
+.line .highlight {
+    transition: color 0.5s ease
+}
+
+.line .highlight:hover {
+    color: #472D2D!important; 
+   
+}
+
+.line span {
+    display: inline-block;
+    transition: color 0.5s ease
+}
+
+.line span:hover {
+    cursor: url('images/1/c-leaves-s3.png') 16 16, auto;/* 대체 커서 이미지를 PNG로 설정 */
+}
+
+
+/* 배경 이미지 설정 */
+.background {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+
+.poet {
+    font-family: "Gowun Batang", serif;
+    font-size: 1rem;
+    color: #166966;
+}
+
+.audio-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+ /* 공통 스타일 */
+ audio {
+    width: 200px; /* 원하는 가로 크기 */
+    height: 30px; /* 원하는 세로 크기 */
+  }
+
+  /* 크롬, 엣지 등 WebKit 기반 브라우저 */
+  audio::-webkit-media-controls-panel {
+    background-color: transparent; /* 패널 배경을 투명하게 */
+    padding: 0; /* 내부 여백 제거 */
+  }
+
+  audio::-webkit-media-controls-play-button,
+  audio::-webkit-media-controls-mute-button,
+  audio::-webkit-media-controls-timeline {
+    transform: scale(0.8); /* 버튼 크기를 줄임 */
+    
+  }
+
+  /* Safari 전용 - WebKit 기반 스타일 */
+  audio::-webkit-media-controls-enclosure {
+    background-color: transparent; /* 전체 배경 투명하게 */
+    width: 200px; /* 가로 크기 */
+    height: 30px; /* 세로 크기 */
+  }
+
+  audio::-webkit-media-controls-play-button,
+  audio::-webkit-media-controls-volume-slider {
+    transform: scale(0.8); /* Safari에서도 버튼 크기를 축소 */
+  }

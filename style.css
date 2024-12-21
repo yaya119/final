@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Pretendard', sans-serif;
+    background-color: #1b4b22;
+    overflow: visible;
+}
+
+.flower {
+    display: block;
+    max-width: 500px;
+}
+a   {
+    display: block;
+    white-space: nowrap;
+}
+
+h1 {
+    position: absolute;
+    top: 46%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Gowun Batang', serif;
+    font-size: 2rem;
+    color: #333;
+    z-index: 5;
+    pointer-events: none;
+    text-align: center;
+}
+
+/* 공통 스타일 (필요할 경우 추가) */
+svg {
+    width: 42%;
+    height: auto;
+    position: absolute; /* 위치 조정을 위한 속성 */
+    overflow: visible; 
+    
+}
+
+
+/* 개별 SVG의 위치 설정 */
+#svg1 {
+    /* top: 50px; 
+    left: 50px; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -120%);
+    transition: filter 0.3s ease; 
+    max-width: 300px;
+}
+
+#svg1:hover {
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+}
+
+#svg2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(5%, -50%);
+    transition: filter 0.3s ease; 
+    max-width: 290px;
+}
+
+#svg2:hover {
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+}
+
+#svg3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    transition: filter 0.3s ease; 
+    max-width: 300px;
+}
+
+#svg3:hover {
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+}
+
+#svg4 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-105%, -50%);
+    transition: filter 0.3s ease; 
+    max-width: 290px;
+}
+
+#svg4:hover {
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+}
+
+#svg5 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20%;
+    height: auto;
+    max-width: 150px;
+}
+
+.audio-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+
+ /* 공통 스타일 */
+ audio {
+    width: 200px; /* 원하는 가로 크기 */
+    height: 30px; /* 원하는 세로 크기 */
+  }
+
+  /* 크롬, 엣지 등 WebKit 기반 브라우저 */
+  audio::-webkit-media-controls-panel {
+    background-color: transparent; /* 패널 배경을 투명하게 */
+    padding: 0; /* 내부 여백 제거 */
+  }
+
+  audio::-webkit-media-controls-play-button,
+  audio::-webkit-media-controls-mute-button,
+  audio::-webkit-media-controls-timeline {
+    transform: scale(0.8); /* 버튼 크기를 줄임 */
+  }
+
+  /* Safari 전용 - WebKit 기반 스타일 */
+  audio::-webkit-media-controls-enclosure {
+    background-color: transparent; /* 전체 배경 투명하게 */
+    width: 200px; /* 가로 크기 */
+    height: 30px; /* 세로 크기 */
+  }
+
+  audio::-webkit-media-controls-play-button,
+  audio::-webkit-media-controls-volume-slider {
+    transform: scale(0.8); /* Safari에서도 버튼 크기를 축소 */
+  }
+
+
+ 

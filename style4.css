@@ -1,0 +1,388 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Pretendard', sans-serif;
+    background-color: #0A3D62;
+    padding: 0px 20px 0px 20px;
+    word-break: keep-all;
+}
+
+/* 'before' 영역의 위치와 스타일 */
+.before {
+    position: fixed; /* 절대 위치 지정 */
+    top: 20px; /* 위에서 20px 위치 */
+    left: 30px; /* 왼쪽에서 30px 위치 */
+    z-index: 10; /* 클릭 영역이 다른 요소에 가려지지 않도록 설정 */
+}
+
+/* a 태그의 크기를 이미지에 맞게 설정 */
+.before a {
+    display: inline-block; /* 링크 영역이 이미지 크기에 맞게 적용되도록 설정 */
+    width: 50px; /* 이미지 크기에 맞게 */
+    height: auto;
+    z-index: 20; /* a 태그가 다른 요소 위에 위치하도록 설정 */
+}
+
+/* 이미지 스타일 설정 */
+.before img {
+    width: 100%; /* a 태그 내에서 이미지가 크기에 맞게 100% 크기로 조정 */
+    height: auto; /* 비율에 맞춰 높이 자동 조정 */
+    pointer-events: auto; /* 이미지에 클릭 이벤트를 허용 */
+}
+
+
+.snow-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .snow {
+    position: absolute;
+    top: -50px;
+    left: calc(var(--random-x) * 1%);
+    width: var(--random-size);
+    height: var(--random-size);
+    background: white;
+    border-radius: 50%; /* 눈송이를 동그랗게 */
+    opacity: calc(var(--random-opacity) + 0.4);
+    animation: fall var(--random-speed) linear infinite;
+    animation-delay: calc(-1 * var(--random-speed) * var(--random-delay));
+  }
+  
+  /* 눈송이가 아래로 떨어지는 애니메이션 */
+  @keyframes fall {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(100vh);
+    }
+  }
+  
+  /* 눈송이를 다양한 크기, 위치, 속도로 만들기 */
+  .snow:nth-child(1) {
+    --random-x: 10; /* 위치 */
+    --random-size: 5px; /* 크기 */
+    --random-opacity: 0.8; /* 투명도 */
+    --random-speed: 5s; /* 떨어지는 속도 */
+    --random-delay: 0.1; /* 시작 딜레이 */
+  }
+  
+  .snow:nth-child(2) {
+    --random-x: 25;
+    --random-size: 8px;
+    --random-opacity: 0.6;
+    --random-speed: 6s;
+    --random-delay: 0.3;
+  }
+  
+  .snow:nth-child(3) {
+    --random-x: 50;
+    --random-size: 10px;
+    --random-opacity: 0.7;
+    --random-speed: 4s;
+    --random-delay: 0.5;
+  }
+  
+  .snow:nth-child(4) {
+    --random-x: 75;
+    --random-size: 6px;
+    --random-opacity: 0.9;
+    --random-speed: 7s;
+    --random-delay: 0.2;
+  }
+  
+  .snow:nth-child(5) {
+    --random-x: 90;
+    --random-size: 12px;
+    --random-opacity: 0.5;
+    --random-speed: 5.5s;
+    --random-delay: 0.4;
+  }
+  
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: rgb(171, 171, 171);
+    position: relative;
+    overflow: hidden;
+}
+
+.title {
+    font-family: "Gowun Batang", serif;
+    font-size: 2rem;
+    margin: 10px;;
+    color: #40E0D0;
+}
+
+.poem {
+    text-align: center;
+}
+
+.line {
+    font-size: 1rem;
+    margin: 20px 0;
+    transition: color 0.5s ease; /* 색상 변화에 대한 효과 */
+    line-height: 1.7;
+}
+
+.line span:nth-child(3n + 1):after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(images/3/바다.svg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+    transition: 0.5s;
+   
+}
+
+.line span:nth-child(3n + 1):hover:after {
+    opacity: 1;
+    
+}
+
+.line span:nth-child(3n + 3):after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(images/3/가시덩굴.svg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+    transition: 0.5s;
+}
+
+.line span:nth-child(3n + 3):hover:after {
+    opacity: 1;
+}
+
+
+.line span:nth-child(3n + 5):after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(images/3/장미.svg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+    transition: 0.5s;
+}
+
+.line span:nth-child(3n +5):hover:after {
+    opacity: 1;
+}
+
+
+
+.line span:nth-child(3n + 1):hover {
+    color: #F4A460;
+}
+.line span:nth-child(3n + 3):hover {
+    color: #F4A460;
+}
+.line span:nth-child(3n + 5):hover {
+    color: #F4A460;
+}
+
+.line .highlight {
+    transition: color 0.5s ease
+}
+
+.line .highlight:hover {
+    color: #F4A460!important; 
+   
+}
+
+.line span {
+    display: inline-block;
+    transition: color 0.5s ease
+}
+
+.line span:hover {
+    cursor: url(images/3/물방울.png) 16 16, auto;/* 대체 커서 이미지를 PNG로 설정 */
+}
+
+.line span.highlight1:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/3/꽃잎비.svg'); /* 해당 이미지 경로 */
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+    transition: 0.5s;
+}
+
+.line span.highlight1:hover:after {
+    opacity: 1; /* 마우스 오버 시 이미지 표시 */
+}
+
+.line span.highlight1:hover {
+    color: #F4A460; /* 텍스트 색 변경 */
+    cursor: url('images/3/물방울.png') 16 16, auto;/* 대체 커서 이미지를 PNG로 설정 */
+}
+
+.line span.highlight2:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/3/가시덩굴.svg'); /* 해당 이미지 경로 */
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+    transition: 0.5s;
+}
+
+.line span.highlight2:hover:after {
+    opacity: 1; /* 마우스 오버 시 이미지 표시 */
+}
+
+.line span.highlight2:hover {
+    color: #F4A460; /* 텍스트 색 변경 */
+    cursor: url('images/3/물방울.png') 16 16, auto;/* 대체 커서 이미지를 PNG로 설정 */
+}
+
+.line span.highlight3:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/3/장미.svg'); /* 해당 이미지 경로 */
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+    transition: 0.5s;
+}
+
+.line span.highlight3:hover:after {
+    opacity: 1; /* 마우스 오버 시 이미지 표시 */
+}
+
+.line span.highlight3:hover {
+    color: #F4A460; /* 텍스트 색 변경 */
+    cursor: url('images/3/물방울.png') 16 16, auto;/* 대체 커서 이미지를 PNG로 설정 */
+}
+
+
+/* 배경 이미지 설정 */
+.background {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+
+.poet {
+    font-family: "Gowun Batang", serif;
+    font-size: 1rem;
+    color: #40E0D0;
+}
+
+
+.audio-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+/* 공통 스타일 */
+audio {
+    width: 200px; /* 원하는 가로 크기 */
+    height: 30px; /* 원하는 세로 크기 */
+  }
+ /* 공통 스타일 */
+ audio {
+    width: 200px; /* 원하는 가로 크기 */
+    height: 30px; /* 원하는 세로 크기 */
+  }
+
+  
+  /* 크롬, 엣지 등 WebKit 기반 브라우저 */
+  audio::-webkit-media-controls-panel {
+    background-color: transparent; 
+    padding: 0; 
+    filter: brightness(0) invert(1);
+  }
+
+  audio::-webkit-media-controls-play-button,
+  audio::-webkit-media-controls-mute-button,
+  audio::-webkit-media-controls-timeline {
+    transform: scale(0.8); /* 버튼 크기를 줄임 */
+   
+  }
+  
+
+  /* Safari 전용 - WebKit 기반 스타일 */
+  audio::-webkit-media-controls-enclosure {
+    background-color: transparent; 
+    width: 200px;
+    height: 30px; 
+  }
+
+  audio::-webkit-media-controls-volume-slider 
+  {
+    transform: scale(0.8); 
+    
+  }
+
+  /* audio::-webkit-media-controls-current-time-display, 
+audio::-webkit-media-controls-time-remaining-display {
+  color: #ffffff; 
+
+} */
+
+/* audio::-webkit-media-controls-panel{
+    filter: brightness(0) invert(1); 
+} */
+
+
+  
+
+  

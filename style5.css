@@ -1,0 +1,546 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Pretendard', sans-serif;
+    background-color: #B7E0FF;
+    padding: 0px 20px 0px 20px;
+    word-break: keep-all;
+}
+
+/* 'before' 영역의 위치와 스타일 */
+.before {
+    position: fixed; /* 절대 위치 지정 */
+    top: 20px; /* 위에서 20px 위치 */
+    left: 30px; /* 왼쪽에서 30px 위치 */
+    z-index: 10; /* 클릭 영역이 다른 요소에 가려지지 않도록 설정 */
+}
+
+/* a 태그의 크기를 이미지에 맞게 설정 */
+.before a {
+    display: inline-block; /* 링크 영역이 이미지 크기에 맞게 적용되도록 설정 */
+    width: 50px; /* 이미지 크기에 맞게 */
+    height: auto;
+    z-index: 20; /* a 태그가 다른 요소 위에 위치하도록 설정 */
+}
+
+/* 이미지 스타일 설정 */
+.before img {
+    width: 100%; /* a 태그 내에서 이미지가 크기에 맞게 100% 크기로 조정 */
+    height: auto; /* 비율에 맞춰 높이 자동 조정 */
+    pointer-events: auto; /* 이미지에 클릭 이벤트를 허용 */
+}
+
+/* 빗방울 애니메이션 */
+@keyframes fall {
+    0% {
+      transform: translateY(-100vh);
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh);
+      opacity: 0.5;
+    }
+  }
+  
+  /* 빗방울 랜덤 위치와 딜레이 */
+  .raindrop {
+    position: absolute;
+    width: 2px;
+    height: 10px;
+    background: rgba(12, 42, 52, 0.5); /* 연한 파란색 */
+    animation: fall 1.5s infinite;
+    opacity: 0.8;
+    left: calc(100% * var(--random-x)); /* 빗방울 위치를 랜덤하게 설정 */
+    animation-delay: calc(-1.5s * var(--random-delay)); /* 초기 딜레이를 랜덤하게 설정 */
+  }
+  
+  /* 빗방울 위치 및 딜레이를 nth-child로 설정 */
+  .raindrop:nth-child(1) {
+    --random-x: 0.1;
+    --random-delay: 0.2;
+  }
+  .raindrop:nth-child(2) {
+    --random-x: 0.25;
+    --random-delay: 0.4;
+  }
+  .raindrop:nth-child(3) {
+    --random-x: 0.4;
+    --random-delay: 0.6;
+  }
+  .raindrop:nth-child(4) {
+    --random-x: 0.55;
+    --random-delay: 0.8;
+  }
+  .raindrop:nth-child(5) {
+    --random-x: 0.7;
+    --random-delay: 1.0;
+  }
+  .raindrop:nth-child(6) {
+    --random-x: 0.85;
+    --random-delay: 1.2;
+  }
+  .raindrop:nth-child(7) {
+    --random-x: 0.05;
+    --random-delay: 0.3;
+  }
+  .raindrop:nth-child(8) {
+    --random-x: 0.3;
+    --random-delay: 0.5;
+  }
+  .raindrop:nth-child(9) {
+    --random-x: 0.6;
+    --random-delay: 0.7;
+  }
+  .raindrop:nth-child(10) {
+    --random-x: 0.9;
+    --random-delay: 0.9;
+  }
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: gray;
+    position: relative;
+    overflow: hidden;
+}
+
+.title {
+    font-family: "Gowun Batang", serif;
+    font-size: 2rem;
+    margin: 10px;;
+    color: #2C6533;
+}
+
+.poem {
+    text-align: center;
+}
+
+.line {
+    font-size: 1rem;
+    margin: 20px 0;
+    transition: color 0.5s ease; /* 색상 변화에 대한 효과 */
+    line-height: 1.7;
+}
+
+.line span:nth-child(3n + 1):after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(images/4/백일홍꽃.svg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+    transition: 0.5s;
+   
+}
+
+.line span:nth-child(3n + 1):hover:after {
+    opacity: 1;
+    
+}
+
+.line span:nth-child(3n + 3):after {
+    content: "";
+    position: absolute;
+    /* top: 0; */
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(images/4/폭풍.svg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+    transition: 0.5s;
+}
+
+.line span:nth-child(3n + 3):hover:after {
+    opacity: 1;
+}
+
+
+.line span:nth-child(3n + 5):after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(images/4/백일홍꽃.svg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+    transition: 0.5s;
+}
+
+
+
+.line span:nth-child(3n +5):hover:after {
+    opacity: 1;
+}
+
+
+
+.line span:nth-child(3n + 1):hover {
+    color: #FF8080;
+}
+.line span:nth-child(3n + 3):hover {
+    color: #ee7272;
+}
+.line span:nth-child(3n + 5):hover {
+    color: #e75b5b;
+}
+
+/* .line .highlight {
+    transition: color 0.5s ease
+}
+
+.line .highlight:hover {
+    color: #472D2D!important; 
+   
+} */
+
+.line span {
+    display: inline-block;
+    transition: color 0.5s ease
+}
+
+.line span:hover {
+    cursor: url('images/4/백일홍.png') 16 16, auto;/* 대체 커서 이미지를 PNG로 설정 */
+}
+
+/* "그 환상의 숲으로" 텍스트에 고유 스타일 적용 */
+.line span.highlight-forest:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(); /* 해당 이미지 경로 */
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+    transition: 0.5s;
+}
+
+.line span.highlight-forest:hover:after {
+    opacity: 1; /* 마우스 오버 시 이미지 표시 */
+}
+
+.line span.highlight-forest:hover {
+    color: #759F2E; /* 텍스트 색 변경 */
+    cursor: url('images/4/백일홍.png') 16 16, auto;/* 대체 커서 이미지를 PNG로 설정 */
+}
+
+.line span.highlight-forest2:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(); /* 해당 이미지 경로 */
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+    transition: 0.5s;
+}
+
+.line span.highlight-forest2:hover:after {
+    opacity: 1; /* 마우스 오버 시 이미지 표시 */
+}
+
+.line span.highlight-forest2:hover {
+    color: #759F2E; /* 텍스트 색 변경 */
+    cursor: url('images/4/백일홍.png') 16 16, auto;/* 대체 커서 이미지를 PNG로 설정 */
+}
+
+/* "그 환상의 숲으로" 텍스트에 고유 스타일 적용 */
+.line span.highlight-1:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(images/4/백일홍꽃3.svg); /* 해당 이미지 경로 */
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+  transition: 0.5s;
+}
+
+.line span.highlight-1:hover:after {
+  opacity: 1; /* 마우스 오버 시 이미지 표시 */
+}
+
+.line span.highlight-1:hover {
+  color: #FF8080; /* 텍스트 색 변경 */
+  cursor: url('images/4/백일홍.png') 16 16, auto;/* 대체 커서 이미지를 PNG로 설정 */
+}
+
+/* "그 환상의 숲으로" 텍스트에 고유 스타일 적용 */
+.line span.highlight-strom:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(images/4/폭풍.svg); /* 해당 이미지 경로 */
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+  transition: 0.5s;
+}
+
+.line span.highlight-strom:hover:after {
+  opacity: 1; /* 마우스 오버 시 이미지 표시 */
+}
+
+.line span.highlight-storm:hover {
+  color: #FF8080; /* 텍스트 색 변경 */
+  cursor: url('images/4/백일홍.png') 16 16, auto;/* 대체 커서 이미지를 PNG로 설정 */
+}
+
+
+/* "그 환상의 숲으로" 텍스트에 고유 스타일 적용 */
+.line span.highlight-flowers:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(images/4/백일홍꽃.svg); /* 해당 이미지 경로 */
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+  transition: 0.5s;
+}
+
+.line span.highlight-flowers:hover:after {
+  opacity: 1; /* 마우스 오버 시 이미지 표시 */
+}
+
+.line span.highlight-flowers:hover {
+  color: #ee7272; /* 텍스트 색 변경 */
+  cursor: url('images/4/백일홍.png') 16 16, auto;/* 대체 커서 이미지를 PNG로 설정 */
+}
+
+/* "그 환상의 숲으로" 텍스트에 고유 스타일 적용 */
+.line span.highlight-flower:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(images/4/백일홍꽃2.svg); /* 해당 이미지 경로 */
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+  transition: 0.5s;
+}
+
+.line span.highlight-flower:hover:after {
+  opacity: 1; /* 마우스 오버 시 이미지 표시 */
+}
+
+.line span.highlight-flower:hover {
+  color: #e75b5b; /* 텍스트 색 변경 */
+  cursor: url('백일홍.png') 16 16, auto;/* 대체 커서 이미지를 PNG로 설정 */
+}
+
+/* "그 환상의 숲으로" 텍스트에 고유 스타일 적용 */
+.line span.highlight-flower2:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(images/4/백일홍꽃3.svg); /* 해당 이미지 경로 */
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+  transition: 0.5s;
+}
+
+.line span.highlight-flower2:hover:after {
+  opacity: 1; /* 마우스 오버 시 이미지 표시 */
+}
+
+.line span.highlight-flower2:hover {
+  color: #FF8080; /* 텍스트 색 변경 */
+  cursor: url('images/4/백일홍.png') 16 16, auto;/* 대체 커서 이미지를 PNG로 설정 */
+}
+
+
+
+
+.line span.highlight-2:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(images/4/백일홍꽃.svg); /* 해당 이미지 경로 */
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+  transition: 0.5s;
+}
+
+.line span.highlight-2:hover:after {
+  opacity: 1; /* 마우스 오버 시 이미지 표시 */
+}
+
+.line span.highlight-2:hover {
+  color: #ee7272; /* 텍스트 색 변경 */
+  cursor: url('images/4/백일홍.png') 16 16, auto;/* 대체 커서 이미지를 PNG로 설정 */
+}
+
+
+.line span.highlight-3:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(images/4/백일홍꽃2.svg); /* 해당 이미지 경로 */
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+  transition: 0.5s;
+}
+
+.line span.highlight-3:hover:after {
+  opacity: 1; /* 마우스 오버 시 이미지 표시 */
+}
+
+.line span.highlight-3:hover {
+  color: #e75b5b; /* 텍스트 색 변경 */
+  cursor: url('images/4/백일홍.png') 16 16, auto;/* 대체 커서 이미지를 PNG로 설정 */
+}
+
+
+
+/* 배경 이미지 설정 */
+.background {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+
+.poet {
+    font-family: "Gowun Batang", serif;
+    font-size: 1rem;
+    color: #2C6533;
+}
+
+.audio-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+ /* 공통 스타일 */
+ audio {
+  width: 200px; /* 원하는 가로 크기 */
+  height: 30px; /* 원하는 세로 크기 */
+}
+
+
+/* 크롬, 엣지 등 WebKit 기반 브라우저 */
+audio::-webkit-media-controls-panel {
+  background-color: transparent; 
+  padding: 0; 
+}
+
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-mute-button,
+audio::-webkit-media-controls-timeline {
+  transform: scale(0.8); /* 버튼 크기를 줄임 */
+ 
+}
+
+
+/* Safari 전용 - WebKit 기반 스타일 */
+audio::-webkit-media-controls-enclosure {
+  background-color: transparent; 
+  width: 200px;
+  height: 30px; 
+}
+
+audio::-webkit-media-controls-volume-slider 
+{
+  transform: scale(0.8); 
+  
+}
+
+/* audio::-webkit-media-controls-current-time-display, 
+audio::-webkit-media-controls-time-remaining-display {
+color: #ffffff; 
+
+} */
+
+/* audio::-webkit-media-controls-panel{
+  filter: brightness(0) invert(1); 
+} */
+
+
+
+
